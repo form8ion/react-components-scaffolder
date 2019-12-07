@@ -1,0 +1,6 @@
+_extends: .github
+repository:
+  name: react-components-scaffolder
+  description: opinionated scaffolder for React component-library projects
+  homepage: 'https://npm.im/@form8ion/react-components-scaffolder'
+  private: false
