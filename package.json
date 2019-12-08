@@ -7,7 +7,8 @@
   "module": "lib/index.es.js",
   "sideEffects": false,
   "files": [
-    "lib/"
+    "lib/",
+    "templates/"
   ],
   "publishConfig": {
     "access": "public"
@@ -65,5 +66,8 @@
     "rollup-plugin-auto-external": "^2.0.0",
     "sinon": "^7.5.0",
     "travis-lint": "^1.0.0"
+  },
+  "dependencies": {
+    "make-dir": "^3.0.0"
   }
 }

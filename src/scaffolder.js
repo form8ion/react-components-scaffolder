@@ -1,0 +1,29 @@
+import {promises} from 'fs';
+import {resolve} from 'path';
+import mkdir from '../thirdparty-wrappers/make-dir';
+
+export default async function ({projectRoot}) {
+  const storybookDirectory = await mkdir(`${projectRoot}/.storybook`);
+
+  await promises.copyFile(
+    resolve(__dirname, '..', 'templates', 'storybook-config.js'),
+    `${storybookDirectory}/config.js`
+  );
+
+  return {
+    scripts: {
+      start: 'start-storybook --port 8888 --ci',
+      'build:storybook': 'build-storybook --quiet'
+    },
+    eslintConfigs: ['react'],
+    dependencies: [
+      'react',
+      'react-dom',
+      'prop-types'
+    ],
+    devDependencies: [
+      '@storybook/react',
+      'babel-loader'
+    ]
+  };
+}
