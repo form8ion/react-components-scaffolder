@@ -36,7 +36,10 @@ suite('scaffolder', () => {
           'react-dom',
           'prop-types'
         ],
-        devDependencies: ['@storybook/react']
+        devDependencies: [
+          '@storybook/react',
+          'babel-loader'
+        ]
       }
     );
     assert.calledWith(
