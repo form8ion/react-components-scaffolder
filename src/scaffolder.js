@@ -2,6 +2,8 @@ import {promises} from 'fs';
 import {resolve} from 'path';
 import mkdir from '../thirdparty-wrappers/make-dir';
 
+const STORYBOOK_BUILD_DIRECTORY = 'storybook-static';
+
 export default async function ({projectRoot}) {
   const storybookDirectory = await mkdir(`${projectRoot}/.storybook`);
 
@@ -24,6 +26,7 @@ export default async function ({projectRoot}) {
     devDependencies: [
       '@storybook/react',
       'babel-loader'
-    ]
+    ],
+    buildDirectory: STORYBOOK_BUILD_DIRECTORY
   };
 }

@@ -21,6 +21,7 @@ suite('scaffolder', () => {
   test('that the component library is scaffolded', async () => {
     const projectRoot = any.string();
     const pathToCreatedDirectory = any.string();
+    const storybookBuildDirectory = 'storybook-static';
     mkdir.default.withArgs(`${projectRoot}/.storybook`).resolves(pathToCreatedDirectory);
 
     assert.deepEqual(
@@ -39,7 +40,8 @@ suite('scaffolder', () => {
         devDependencies: [
           '@storybook/react',
           'babel-loader'
-        ]
+        ],
+        buildDirectory: storybookBuildDirectory
       }
     );
     assert.calledWith(
