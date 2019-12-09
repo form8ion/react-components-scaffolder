@@ -27,6 +27,6 @@ export default async function ({projectRoot}) {
       '@storybook/react',
       'babel-loader'
     ],
-    buildDirectory: STORYBOOK_BUILD_DIRECTORY
+    vcsIgnore: {directories: [`/${STORYBOOK_BUILD_DIRECTORY}/`]}
   };
 }

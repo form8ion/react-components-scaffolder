@@ -41,7 +41,7 @@ suite('scaffolder', () => {
           '@storybook/react',
           'babel-loader'
         ],
-        buildDirectory: storybookBuildDirectory
+        vcsIgnore: {directories: [`/${storybookBuildDirectory}/`]}
       }
     );
     assert.calledWith(
