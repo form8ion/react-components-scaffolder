@@ -39,7 +39,9 @@ suite('scaffolder', () => {
         ],
         devDependencies: [
           '@storybook/react',
-          'babel-loader'
+          'babel-loader',
+          'enzyme',
+          'enzyme-adapter-react-16'
         ],
         vcsIgnore: {directories: [`/${storybookBuildDirectory}/`], files: []}
       }

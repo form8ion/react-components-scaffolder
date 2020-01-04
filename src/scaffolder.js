@@ -25,7 +25,9 @@ export default async function ({projectRoot}) {
     ],
     devDependencies: [
       '@storybook/react',
-      'babel-loader'
+      'babel-loader',
+      'enzyme',
+      'enzyme-adapter-react-16'
     ],
     vcsIgnore: {directories: [`/${STORYBOOK_BUILD_DIRECTORY}/`], files: []}
   };
