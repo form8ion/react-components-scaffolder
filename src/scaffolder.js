@@ -1,7 +1,11 @@
+import scaffoldTesting from './testing';
 import scaffoldStorybook from './storybook';
 
-export default async function ({projectRoot}) {
-  const storybookResults = await scaffoldStorybook({projectRoot});
+export default async function ({projectRoot, tests}) {
+  const [testingResults, storybookResults] = await Promise.all([
+    scaffoldTesting({tests}),
+    scaffoldStorybook({projectRoot})
+  ]);
 
   return {
     scripts: storybookResults.scripts,
@@ -12,8 +16,7 @@ export default async function ({projectRoot}) {
       'prop-types'
     ],
     devDependencies: [
-      'enzyme',
-      'enzyme-adapter-react-16',
+      ...testingResults.devDependencies,
       ...storybookResults.devDependencies
     ],
     vcsIgnore: {directories: storybookResults.vcsIgnore.directories, files: []}

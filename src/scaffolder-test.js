@@ -2,6 +2,7 @@ import {assert} from 'chai';
 import sinon from 'sinon';
 import any from '@travi/any';
 import * as storybookScaffolder from './storybook';
+import * as testingScaffolder from './testing';
 import scaffold from './scaffolder';
 
 suite('scaffolder', () => {
@@ -11,6 +12,7 @@ suite('scaffolder', () => {
     sandbox = sinon.createSandbox();
 
     sandbox.stub(storybookScaffolder, 'default');
+    sandbox.stub(testingScaffolder, 'default');
   });
 
   teardown(() => sandbox.restore());
@@ -20,6 +22,8 @@ suite('scaffolder', () => {
     const storybookScripts = any.simpleObject();
     const storybookDevDependencies = any.listOf(any.string);
     const storybookIgnoredDirectories = any.listOf(any.string);
+    const testingDevDependencies = any.listOf(any.string);
+    const tests = any.simpleObject();
     storybookScaffolder.default
       .withArgs({projectRoot})
       .resolves({
@@ -27,9 +31,10 @@ suite('scaffolder', () => {
         devDependencies: storybookDevDependencies,
         vcsIgnore: {directories: storybookIgnoredDirectories}
       });
+    testingScaffolder.default.withArgs({tests}).resolves({devDependencies: testingDevDependencies});
 
     assert.deepEqual(
-      await scaffold({projectRoot}),
+      await scaffold({projectRoot, tests}),
       {
         scripts: storybookScripts,
         eslintConfigs: ['react'],
@@ -39,8 +44,7 @@ suite('scaffolder', () => {
           'prop-types'
         ],
         devDependencies: [
-          'enzyme',
-          'enzyme-adapter-react-16',
+          ...testingDevDependencies,
           ...storybookDevDependencies
         ],
         vcsIgnore: {directories: storybookIgnoredDirectories, files: []}
