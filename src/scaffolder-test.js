@@ -1,9 +1,7 @@
-import {promises, promises as fsPromises} from 'fs';
-import {resolve} from 'path';
 import {assert} from 'chai';
 import sinon from 'sinon';
 import any from '@travi/any';
-import * as mkdir from '../thirdparty-wrappers/make-dir';
+import * as storybookScaffolder from './storybook';
 import scaffold from './scaffolder';
 
 suite('scaffolder', () => {
@@ -12,25 +10,28 @@ suite('scaffolder', () => {
   setup(() => {
     sandbox = sinon.createSandbox();
 
-    sandbox.stub(mkdir, 'default');
-    sandbox.stub(fsPromises, 'copyFile');
+    sandbox.stub(storybookScaffolder, 'default');
   });
 
   teardown(() => sandbox.restore());
 
   test('that the component library is scaffolded', async () => {
     const projectRoot = any.string();
-    const pathToCreatedDirectory = any.string();
-    const storybookBuildDirectory = 'storybook-static';
-    mkdir.default.withArgs(`${projectRoot}/.storybook`).resolves(pathToCreatedDirectory);
+    const storybookScripts = any.simpleObject();
+    const storybookDevDependencies = any.listOf(any.string);
+    const storybookIgnoredDirectories = any.listOf(any.string);
+    storybookScaffolder.default
+      .withArgs({projectRoot})
+      .resolves({
+        scripts: storybookScripts,
+        devDependencies: storybookDevDependencies,
+        vcsIgnore: {directories: storybookIgnoredDirectories}
+      });
 
     assert.deepEqual(
       await scaffold({projectRoot}),
       {
-        scripts: {
-          start: 'start-storybook --port 8888 --ci',
-          'build:storybook': 'build-storybook --quiet'
-        },
+        scripts: storybookScripts,
         eslintConfigs: ['react'],
         dependencies: [
           'react',
@@ -38,17 +39,12 @@ suite('scaffolder', () => {
           'prop-types'
         ],
         devDependencies: [
-          '@storybook/react',
-          'babel-loader',
           'enzyme',
-          'enzyme-adapter-react-16'
+          'enzyme-adapter-react-16',
+          ...storybookDevDependencies
         ],
-        vcsIgnore: {directories: [`/${storybookBuildDirectory}/`], files: []}
+        vcsIgnore: {directories: storybookIgnoredDirectories, files: []}
       }
-    );
-    assert.calledWith(
-      promises.copyFile, resolve(__dirname, '..', 'templates', 'storybook-config.js'),
-      `${pathToCreatedDirectory}/config.js`
     );
   });
 });

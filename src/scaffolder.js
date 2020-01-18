@@ -1,22 +1,10 @@
-import {promises} from 'fs';
-import {resolve} from 'path';
-import mkdir from '../thirdparty-wrappers/make-dir';
-
-const STORYBOOK_BUILD_DIRECTORY = 'storybook-static';
+import scaffoldStorybook from './storybook';
 
 export default async function ({projectRoot}) {
-  const storybookDirectory = await mkdir(`${projectRoot}/.storybook`);
-
-  await promises.copyFile(
-    resolve(__dirname, '..', 'templates', 'storybook-config.js'),
-    `${storybookDirectory}/config.js`
-  );
+  const storybookResults = await scaffoldStorybook({projectRoot});
 
   return {
-    scripts: {
-      start: 'start-storybook --port 8888 --ci',
-      'build:storybook': 'build-storybook --quiet'
-    },
+    scripts: storybookResults.scripts,
     eslintConfigs: ['react'],
     dependencies: [
       'react',
@@ -24,11 +12,10 @@ export default async function ({projectRoot}) {
       'prop-types'
     ],
     devDependencies: [
-      '@storybook/react',
-      'babel-loader',
       'enzyme',
-      'enzyme-adapter-react-16'
+      'enzyme-adapter-react-16',
+      ...storybookResults.devDependencies
     ],
-    vcsIgnore: {directories: [`/${STORYBOOK_BUILD_DIRECTORY}/`], files: []}
+    vcsIgnore: {directories: storybookResults.vcsIgnore.directories, files: []}
   };
 }
