@@ -22,22 +22,34 @@ suite('scaffolder', () => {
     const storybookScripts = any.simpleObject();
     const storybookDevDependencies = any.listOf(any.string);
     const storybookIgnoredDirectories = any.listOf(any.string);
+    const storybookIgnoredFiles = any.listOf(any.string);
     const testingDevDependencies = any.listOf(any.string);
+    const testingScripts = any.simpleObject();
+    const testingIgnoredDirectories = any.listOf(any.string);
+    const testingIgnoredFiles = any.listOf(any.string);
+    const testingEslintConfigs = any.listOf(any.string);
     const tests = any.simpleObject();
     storybookScaffolder.default
       .withArgs({projectRoot})
       .resolves({
         scripts: storybookScripts,
         devDependencies: storybookDevDependencies,
-        vcsIgnore: {directories: storybookIgnoredDirectories}
+        vcsIgnore: {directories: storybookIgnoredDirectories, files: storybookIgnoredFiles}
       });
-    testingScaffolder.default.withArgs({tests}).resolves({devDependencies: testingDevDependencies});
+    testingScaffolder.default
+      .withArgs({projectRoot, tests})
+      .resolves({
+        scripts: testingScripts,
+        devDependencies: testingDevDependencies,
+        vcsIgnore: {directories: testingIgnoredDirectories, files: testingIgnoredFiles},
+        eslintConfigs: testingEslintConfigs
+      });
 
     assert.deepEqual(
       await scaffold({projectRoot, tests}),
       {
-        scripts: storybookScripts,
-        eslintConfigs: ['react'],
+        scripts: {...storybookScripts, ...testingScripts},
+        eslintConfigs: ['react', ...testingEslintConfigs],
         dependencies: [
           'react',
           'react-dom',
@@ -47,7 +59,10 @@ suite('scaffolder', () => {
           ...testingDevDependencies,
           ...storybookDevDependencies
         ],
-        vcsIgnore: {directories: storybookIgnoredDirectories, files: []}
+        vcsIgnore: {
+          directories: [...testingIgnoredDirectories, ...storybookIgnoredDirectories],
+          files: [...testingIgnoredFiles, ...storybookIgnoredFiles]
+        }
       }
     );
   });
