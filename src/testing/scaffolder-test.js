@@ -2,7 +2,7 @@ import * as cypressScaffolder from '@form8ion/cypress-scaffolder';
 import {assert} from 'chai';
 import sinon from 'sinon';
 import any from '@travi/any';
-import scaffold from './testing';
+import scaffold from '.';
 
 suite('testing', () => {
   let sandbox;

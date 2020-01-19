@@ -2,7 +2,7 @@ import {assert} from 'chai';
 import sinon from 'sinon';
 import any from '@travi/any';
 import * as storybookScaffolder from './storybook';
-import * as testingScaffolder from './testing';
+import * as testingScaffolder from './testing/scaffolder';
 import scaffold from './scaffolder';
 
 suite('scaffolder', () => {
