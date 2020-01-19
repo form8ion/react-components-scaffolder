@@ -1,19 +1,18 @@
-import {scaffold as scaffoldCypress} from '@form8ion/cypress-scaffolder';
+import scaffoldintegration from './integration';
 
 export default async function ({projectRoot, tests}) {
-  const cypressResults = tests.integration
-    && await scaffoldCypress({projectRoot, testDirectory: 'test/integration/', testBaseUrl: 'http://localhost:5000'});
+  const integrationResults = tests.integration && await scaffoldintegration({projectRoot});
 
   return {
-    scripts: {...cypressResults && cypressResults.scripts},
+    scripts: {...integrationResults && integrationResults.scripts},
     devDependencies: [
       ...tests.unit ? ['enzyme', 'enzyme-adapter-react-16'] : [],
-      ...cypressResults ? cypressResults.devDependencies : []
+      ...integrationResults ? integrationResults.devDependencies : []
     ],
     vcsIgnore: {
-      directories: [...cypressResults ? cypressResults.vcsIgnore.directories : []],
-      files: [...cypressResults ? cypressResults.vcsIgnore.files : []]
+      directories: [...integrationResults ? integrationResults.vcsIgnore.directories : []],
+      files: [...integrationResults ? integrationResults.vcsIgnore.files : []]
     },
-    eslintConfigs: [...cypressResults ? cypressResults.eslintConfigs : []]
+    eslintConfigs: [...integrationResults ? integrationResults.eslintConfigs : []]
   };
 }

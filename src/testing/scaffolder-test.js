@@ -1,7 +1,7 @@
-import * as cypressScaffolder from '@form8ion/cypress-scaffolder';
 import {assert} from 'chai';
 import sinon from 'sinon';
 import any from '@travi/any';
+import * as integrationScaffolder from './integration';
 import scaffold from '.';
 
 suite('testing', () => {
@@ -11,7 +11,7 @@ suite('testing', () => {
   setup(() => {
     sandbox = sinon.createSandbox();
 
-    sandbox.stub(cypressScaffolder, 'scaffold');
+    sandbox.stub(integrationScaffolder, 'default');
   });
 
   teardown(() => sandbox.restore());
@@ -36,27 +36,27 @@ suite('testing', () => {
   });
 
   test('that cypress is scaffolded if the project will be integration tested', async () => {
-    const cypressDevDependencies = any.listOf(any.word);
-    const cypressScripts = any.simpleObject();
-    const cypressIgnoredDirectories = any.listOf(any.word);
-    const cypressIgnoredFiles = any.listOf(any.word);
-    const cypressEslintConfigs = any.listOf(any.simpleObject);
-    cypressScaffolder.scaffold
-      .withArgs({projectRoot, testDirectory: 'test/integration/', testBaseUrl: 'http://localhost:5000'})
+    const integrationDevDependencies = any.listOf(any.word);
+    const integrationScripts = any.simpleObject();
+    const integrationIgnoredDirectories = any.listOf(any.word);
+    const integrationIgnoredFiles = any.listOf(any.word);
+    const integrationEslintConfigs = any.listOf(any.simpleObject);
+    integrationScaffolder.default
+      .withArgs({projectRoot})
       .resolves({
-        scripts: cypressScripts,
-        devDependencies: cypressDevDependencies,
-        vcsIgnore: {directories: cypressIgnoredDirectories, files: cypressIgnoredFiles},
-        eslintConfigs: cypressEslintConfigs
+        scripts: integrationScripts,
+        devDependencies: integrationDevDependencies,
+        vcsIgnore: {directories: integrationIgnoredDirectories, files: integrationIgnoredFiles},
+        eslintConfigs: integrationEslintConfigs
       });
 
     assert.deepEqual(
       await scaffold({projectRoot, tests: {integration: true}}),
       {
-        scripts: cypressScripts,
-        devDependencies: cypressDevDependencies,
-        vcsIgnore: {directories: cypressIgnoredDirectories, files: cypressIgnoredFiles},
-        eslintConfigs: cypressEslintConfigs
+        scripts: integrationScripts,
+        devDependencies: integrationDevDependencies,
+        vcsIgnore: {directories: integrationIgnoredDirectories, files: integrationIgnoredFiles},
+        eslintConfigs: integrationEslintConfigs
       }
     );
   });
