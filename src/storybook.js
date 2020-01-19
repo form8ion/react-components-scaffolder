@@ -2,7 +2,7 @@ import {promises} from 'fs';
 import {resolve} from 'path';
 import mkdir from '../thirdparty-wrappers/make-dir';
 
-const STORYBOOK_BUILD_DIRECTORY = 'storybook-static';
+export const STORYBOOK_BUILD_DIRECTORY = 'storybook-static';
 
 export default async function ({projectRoot}) {
   const storybookDirectory = await mkdir(`${projectRoot}/.storybook`);

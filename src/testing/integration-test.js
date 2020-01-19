@@ -1,7 +1,9 @@
 import * as cypressScaffolder from '@form8ion/cypress-scaffolder';
+import deepmerge from 'deepmerge';
 import any from '@travi/any';
 import sinon from 'sinon';
 import {assert} from 'chai';
+import {STORYBOOK_BUILD_DIRECTORY} from '../storybook';
 import scaffold from './integration';
 
 suite('integration', () => {
@@ -18,10 +20,24 @@ suite('integration', () => {
 
   test('that cypress is scaffolded', async () => {
     const cypressResults = any.simpleObject();
+    const baseUrl = 'http://localhost:5000';
     cypressScaffolder.scaffold
-      .withArgs({projectRoot, testDirectory: 'test/integration/', testBaseUrl: 'http://localhost:5000'})
+      .withArgs({projectRoot, testDirectory: 'test/integration/', testBaseUrl: baseUrl})
       .resolves(cypressResults);
 
-    assert.equal(await scaffold({projectRoot}), cypressResults);
+    assert.deepEqual(
+      await scaffold({projectRoot}),
+      deepmerge(
+        cypressResults,
+        {
+          scripts: {
+            preserve: 'run-s build:storybook',
+            serve: `serve ${STORYBOOK_BUILD_DIRECTORY}/`,
+            'test:integration': `start-server-and-test 'npm serve' ${baseUrl} cypress:run`
+          },
+          devDependencies: ['serve', 'start-server-and-test']
+        }
+      )
+    );
   });
 });
