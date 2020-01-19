@@ -17,22 +17,11 @@ suite('testing', () => {
   teardown(() => sandbox.restore());
 
   test('that no additional dependencies are installed if the project will not be tested', async () => {
-    assert.deepEqual(
-      await scaffold({tests: {}}),
-      {scripts: {}, devDependencies: [], vcsIgnore: {files: [], directories: []}, eslintConfigs: []}
-    );
+    assert.deepEqual(await scaffold({tests: {}}), {devDependencies: []});
   });
 
   test('that enzyme gets installed if the project will be unit tested', async () => {
-    assert.deepEqual(
-      await scaffold({tests: {unit: true}}),
-      {
-        scripts: {},
-        devDependencies: ['enzyme', 'enzyme-adapter-react-16'],
-        vcsIgnore: {files: [], directories: []},
-        eslintConfigs: []
-      }
-    );
+    assert.deepEqual(await scaffold({tests: {unit: true}}), {devDependencies: ['enzyme', 'enzyme-adapter-react-16']});
   });
 
   test('that cypress is scaffolded if the project will be integration tested', async () => {

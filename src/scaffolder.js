@@ -1,3 +1,4 @@
+import deepmerge from 'deepmerge';
 import scaffoldTesting from './testing';
 import scaffoldStorybook from './storybook';
 
@@ -7,24 +8,12 @@ export default async function ({projectRoot, tests}) {
     scaffoldStorybook({projectRoot})
   ]);
 
-  return {
-    scripts: {
-      ...storybookResults.scripts,
-      ...testingResults.scripts
+  return deepmerge.all([
+    {
+      dependencies: ['react', 'react-dom', 'prop-types'],
+      eslintConfigs: ['react']
     },
-    eslintConfigs: ['react', ...testingResults.eslintConfigs],
-    dependencies: [
-      'react',
-      'react-dom',
-      'prop-types'
-    ],
-    devDependencies: [
-      ...testingResults.devDependencies,
-      ...storybookResults.devDependencies
-    ],
-    vcsIgnore: {
-      directories: [...testingResults.vcsIgnore.directories, ...storybookResults.vcsIgnore.directories],
-      files: [...testingResults.vcsIgnore.files, ...storybookResults.vcsIgnore.files]
-    }
-  };
+    testingResults,
+    storybookResults
+  ]);
 }
