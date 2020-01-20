@@ -71,7 +71,7 @@
     "travis-lint": "^1.0.0"
   },
   "dependencies": {
-    "@form8ion/cypress-scaffolder": "^2.1.0",
+    "@form8ion/cypress-scaffolder": "2.2.0",
     "deepmerge": "^4.2.2",
     "make-dir": "^3.0.0"
   },
