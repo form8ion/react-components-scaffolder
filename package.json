@@ -51,7 +51,7 @@
     "@form8ion/remark-lint-preset": "1.0.6",
     "@travi/any": "2.0.7",
     "@travi/javascript-scaffolder": "10.22.1",
-    "ban-sensitive-files": "1.9.2",
+    "ban-sensitive-files": "1.9.7",
     "chai": "4.2.0",
     "codecov": "3.6.5",
     "cucumber": "6.0.5",
