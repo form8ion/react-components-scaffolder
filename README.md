@@ -31,7 +31,6 @@ $ npm install @form8ion/react-components-scaffolder --save-prod
 [![Conventional Commits][commit-convention-badge]][commit-convention-link]
 [![Commitizen friendly][commitizen-badge]][commitizen-link]
 [![semantic-release][semantic-release-badge]][semantic-release-link]
-[![Greenkeeper badge][greenkeeper-badge]][greenkeeper-link]
 [![PRs Welcome][PRs-badge]][PRs-link]
 [![Renovate][renovate-badge]][renovate-link]
 
@@ -77,10 +76,6 @@ $ npm test
 [PRs-link]: http://makeapullrequest.com
 
 [PRs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg
-
-[greenkeeper-badge]: https://badges.greenkeeper.io/form8ion/react-components-scaffolder.svg
-
-[greenkeeper-link]: https://greenkeeper.io/
 
 [renovate-link]: https://renovatebot.com
 
