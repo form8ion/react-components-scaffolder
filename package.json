@@ -51,6 +51,7 @@
     "@form8ion/remark-lint-preset": "1.0.6",
     "@travi/any": "2.0.8",
     "@travi/javascript-scaffolder": "10.22.2",
+    "@travi/travis-lint": "1.0.1",
     "ban-sensitive-files": "1.9.7",
     "chai": "4.2.0",
     "codecov": "3.7.0",
@@ -67,8 +68,7 @@
     "rollup": "2.10.3",
     "rollup-plugin-auto-external": "2.0.0",
     "rollup-plugin-node-resolve": "5.2.0",
-    "sinon": "9.0.2",
-    "travis-lint": "1.0.0"
+    "sinon": "9.0.2"
   },
   "dependencies": {
     "@form8ion/cypress-scaffolder": "2.2.0",
