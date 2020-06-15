@@ -22,8 +22,7 @@ suite('storybook', () => {
     const projectRoot = any.string();
     const storybookBuildDirectory = 'storybook-static';
     const pathToCreatedDirectory = any.string();
-    mkdir.default.withArgs(`${projectRoot}/.storybook`)
-      .resolves(pathToCreatedDirectory);
+    mkdir.default.withArgs(`${projectRoot}/.storybook`).resolves(pathToCreatedDirectory);
 
     assert.deepEqual(
       await scaffold({projectRoot}),
@@ -34,14 +33,15 @@ suite('storybook', () => {
         },
         devDependencies: [
           '@storybook/react',
-          'babel-loader'
+          'babel-loader',
+          'webpack'
         ],
         vcsIgnore: {directories: [`/${storybookBuildDirectory}/`]}
       }
     );
     assert.calledWith(
       promises.copyFile, resolve(__dirname, '..', 'templates', 'storybook-config.js'),
-      `${pathToCreatedDirectory}/config.js`
+      `${pathToCreatedDirectory}/main.js`
     );
   });
 });

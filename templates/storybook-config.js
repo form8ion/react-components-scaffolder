@@ -1,3 +1,10 @@
-import {configure} from '@storybook/react';
+const webpack = require('webpack');
 
-configure(require.context('../src', true, /stories\.js$/), module);
+module.exports = {
+  stories: ['../src/**/stories.js'],
+  webpackFinal: config => {
+    config.plugins.push(new webpack.DefinePlugin({'process.env': {ANY_SEED: JSON.stringify(0.4070123094134033)}}));
+
+    return config;
+  }
+};

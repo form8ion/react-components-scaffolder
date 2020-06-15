@@ -9,7 +9,7 @@ export default async function ({projectRoot}) {
 
   await promises.copyFile(
     resolve(__dirname, '..', 'templates', 'storybook-config.js'),
-    `${storybookDirectory}/config.js`
+    `${storybookDirectory}/main.js`
   );
 
   return {
@@ -19,7 +19,8 @@ export default async function ({projectRoot}) {
     },
     devDependencies: [
       '@storybook/react',
-      'babel-loader'
+      'babel-loader',
+      'webpack'
     ],
     vcsIgnore: {directories: [`/${STORYBOOK_BUILD_DIRECTORY}/`]}
   };
