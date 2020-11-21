@@ -52,7 +52,7 @@
     "@travi/any": "2.0.15",
     "@travi/javascript-scaffolder": "11.13.1",
     "@travi/travis-lint": "1.0.1",
-    "ban-sensitive-files": "1.9.12",
+    "ban-sensitive-files": "1.9.14",
     "chai": "4.2.0",
     "codecov": "3.8.1",
     "cucumber": "6.0.5",
