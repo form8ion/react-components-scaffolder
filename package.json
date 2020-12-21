@@ -50,7 +50,7 @@
     "@form8ion/remark-lint-preset": "1.0.11",
     "@travi/any": "2.0.15",
     "@travi/javascript-scaffolder": "12.0.0",
-    "@travi/project-scaffolder": "9.0.0-beta.2",
+    "@travi/project-scaffolder": "9.0.0-beta.3",
     "ban-sensitive-files": "1.9.14",
     "chai": "4.2.0",
     "codecov": "3.8.1",
