@@ -50,7 +50,7 @@
     "@form8ion/eslint-config-mocha": "1.2.12",
     "@form8ion/remark-lint-preset": "1.0.13",
     "@travi/any": "2.0.17",
-    "@travi/javascript-scaffolder": "14.0.1",
+    "@travi/javascript-scaffolder": "14.1.0",
     "@travi/project-scaffolder": "10.1.2",
     "ban-sensitive-files": "1.9.16",
     "chai": "4.3.4",
