@@ -49,7 +49,7 @@
     "@form8ion/eslint-config-cucumber": "1.4.0",
     "@form8ion/eslint-config-mocha": "1.2.12",
     "@form8ion/remark-lint-preset": "2.1.6",
-    "@travi/any": "2.0.18",
+    "@travi/any": "2.0.19",
     "@travi/javascript-scaffolder": "14.14.0",
     "@travi/project-scaffolder": "10.1.2",
     "ban-sensitive-files": "1.9.16",
