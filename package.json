@@ -50,7 +50,7 @@
     "@form8ion/eslint-config-mocha": "1.2.17",
     "@form8ion/remark-lint-preset": "2.1.7",
     "@travi/any": "2.0.19",
-    "@travi/javascript-scaffolder": "14.14.7",
+    "@form8ion/javascript": "2.0.0",
     "@travi/project-scaffolder": "10.1.2",
     "ban-sensitive-files": "1.9.16",
     "chai": "4.3.4",
@@ -76,6 +76,6 @@
     "make-dir": "^3.0.0"
   },
   "peerDependencies": {
-    "@travi/javascript-scaffolder": "^10.1.0 || ^11.0.0-alpha.1 || ^12.0.0 || ^13.0.0 || ^14.0.0"
+    "@form8ion/javascript": "^10.1.0 || ^11.0.0-alpha.1 || ^12.0.0 || ^13.0.0 || ^14.0.0 || ^2.0.0"
   }
 }
