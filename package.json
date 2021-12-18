@@ -76,6 +76,6 @@
     "make-dir": "^3.0.0"
   },
   "peerDependencies": {
-    "@form8ion/javascript": "^10.1.0 || ^11.0.0-alpha.1 || ^12.0.0 || ^13.0.0 || ^14.0.0 || ^2.0.0"
+    "@form8ion/javascript": ">=2.0.0"
   }
 }
