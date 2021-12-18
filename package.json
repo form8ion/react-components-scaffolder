@@ -48,10 +48,17 @@
     "@form8ion/eslint-config": "1.8.5",
     "@form8ion/eslint-config-cucumber": "1.4.0",
     "@form8ion/eslint-config-mocha": "1.2.17",
+    "@form8ion/javascript": "2.0.0",
     "@form8ion/remark-lint-preset": "2.1.7",
     "@travi/any": "2.0.19",
+<<<<<<< HEAD
     "@form8ion/javascript": "2.2.0",
     "@form8ion/project": "11.0.0",
+||||||| parent of a9162db (chore(project): removed the project package since it isnt required anymore)
+    "@form8ion/javascript": "2.0.0",
+    "@form8ion/project": "11.0.0",
+=======
+>>>>>>> a9162db (chore(project): removed the project package since it isnt required anymore)
     "ban-sensitive-files": "1.9.16",
     "chai": "4.3.4",
     "codecov": "3.8.3",
