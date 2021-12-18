@@ -43,6 +43,7 @@
   },
   "devDependencies": {
     "@babel/register": "7.16.5",
+    "@cucumber/cucumber": "8.0.0-rc.1",
     "@form8ion/babel-preset": "1.6.73",
     "@form8ion/commitlint-config": "1.0.23",
     "@form8ion/eslint-config": "2.0.1",
@@ -55,7 +56,6 @@
     "ban-sensitive-files": "1.9.16",
     "chai": "4.3.4",
     "codecov": "3.8.3",
-    "cucumber": "6.0.5",
     "cz-conventional-changelog": "3.3.0",
     "gherkin-lint": "4.2.2",
     "husky": "7.0.4",
