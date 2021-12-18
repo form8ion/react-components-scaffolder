@@ -40,7 +40,8 @@ suite('storybook', () => {
       }
     );
     assert.calledWith(
-      promises.copyFile, resolve(__dirname, '..', 'templates', 'storybook-config.js'),
+      promises.copyFile,
+      resolve(__dirname, '..', 'templates', 'storybook-config.js'),
       `${pathToCreatedDirectory}/main.js`
     );
   });
