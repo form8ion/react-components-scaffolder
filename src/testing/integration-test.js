@@ -1,4 +1,4 @@
-import * as cypressScaffolder from '@form8ion/cypress-scaffolder';
+import cypressScaffolder from '@form8ion/cypress-scaffolder';
 import deepmerge from 'deepmerge';
 import any from '@travi/any';
 import sinon from 'sinon';
