@@ -1,5 +1,6 @@
 import deepmerge from 'deepmerge';
-import scaffoldIntegration from './integration';
+
+import scaffoldIntegration from './integration.js';
 
 export default async function ({projectRoot, tests}) {
   const integrationResults = tests.integration ? await scaffoldIntegration({projectRoot}) : {};

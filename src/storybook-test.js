@@ -1,10 +1,12 @@
 import {promises, promises as fsPromises} from 'fs';
 import {resolve} from 'path';
+
 import {assert} from 'chai';
 import any from '@travi/any';
 import sinon from 'sinon';
-import * as mkdir from '../thirdparty-wrappers/make-dir';
-import scaffold from './storybook';
+
+import * as mkdir from '../thirdparty-wrappers/make-dir.js';
+import scaffold from './storybook.js';
 
 suite('storybook', () => {
   let sandbox;

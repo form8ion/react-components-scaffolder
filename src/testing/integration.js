@@ -1,6 +1,7 @@
 import deepmerge from 'deepmerge';
 import {scaffold as scaffoldCypress} from '@form8ion/cypress-scaffolder';
-import {STORYBOOK_BUILD_DIRECTORY} from '../storybook';
+
+import {STORYBOOK_BUILD_DIRECTORY} from '../storybook.js';
 
 export default async function ({projectRoot}) {
   const baseUrl = 'http://localhost:5000';
