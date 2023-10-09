@@ -1,9 +1,10 @@
 import {assert} from 'chai';
 import sinon from 'sinon';
 import any from '@travi/any';
-import * as storybookScaffolder from './storybook';
-import * as testingScaffolder from './testing/scaffolder';
-import scaffold from './scaffolder';
+
+import * as storybookScaffolder from './storybook.js';
+import * as testingScaffolder from './testing/scaffolder.js';
+import scaffold from './scaffolder.js';
 
 suite('scaffolder', () => {
   let sandbox;

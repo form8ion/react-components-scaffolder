@@ -1,10 +1,12 @@
 import cypressScaffolder from '@form8ion/cypress-scaffolder';
 import deepmerge from 'deepmerge';
+
 import any from '@travi/any';
 import sinon from 'sinon';
 import {assert} from 'chai';
-import {STORYBOOK_BUILD_DIRECTORY} from '../storybook';
-import scaffold from './integration';
+
+import {STORYBOOK_BUILD_DIRECTORY} from '../storybook.js';
+import scaffold from './integration.js';
 
 suite('integration', () => {
   let sandbox;

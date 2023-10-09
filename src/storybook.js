@@ -1,6 +1,7 @@
 import {promises} from 'fs';
 import {resolve} from 'path';
-import mkdir from '../thirdparty-wrappers/make-dir';
+
+import mkdir from '../thirdparty-wrappers/make-dir.js';
 
 export const STORYBOOK_BUILD_DIRECTORY = 'storybook-static';
 
