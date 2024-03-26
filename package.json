@@ -68,7 +68,7 @@
     "gherkin-lint": "4.2.4",
     "husky": "9.0.11",
     "lockfile-lint": "4.13.2",
-    "mocha": "10.3.0",
+    "mocha": "10.4.0",
     "npm-run-all2": "6.1.2",
     "publint": "0.2.7",
     "remark-cli": "12.0.0",
