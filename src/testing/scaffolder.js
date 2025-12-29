@@ -6,7 +6,7 @@ export default async function ({projectRoot, tests}) {
   const integrationResults = tests.integration ? await scaffoldIntegration({projectRoot}) : {};
 
   return deepmerge(
-    {devDependencies: [...tests.unit ? ['enzyme', 'enzyme-adapter-react-16'] : []]},
+    {dependencies: {javascript: {development: [...tests.unit ? ['enzyme', 'enzyme-adapter-react-16'] : []]}}},
     integrationResults
   );
 }

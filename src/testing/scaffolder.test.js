@@ -11,11 +11,12 @@ describe('testing scaffolder', () => {
   const projectRoot = any.string();
 
   it('should not install additional dependencies if the project will not be tested', async () => {
-    expect(await scaffold({tests: {}})).toEqual({devDependencies: []});
+    expect(await scaffold({tests: {}})).toEqual({dependencies: {javascript: {development: []}}});
   });
 
   it('should install enzyme if the project will be unit tested', async () => {
-    expect(await scaffold({tests: {unit: true}})).toEqual({devDependencies: ['enzyme', 'enzyme-adapter-react-16']});
+    expect(await scaffold({tests: {unit: true}}))
+      .toEqual({dependencies: {javascript: {development: ['enzyme', 'enzyme-adapter-react-16']}}});
   });
 
   it('should scaffold cypress if the project will be integration tested', async () => {
@@ -28,14 +29,14 @@ describe('testing scaffolder', () => {
       .calledWith({projectRoot})
       .thenResolve({
         scripts: integrationScripts,
-        devDependencies: integrationDevDependencies,
+        dependencies: {javascript: {development: integrationDevDependencies}},
         vcsIgnore: {directories: integrationIgnoredDirectories, files: integrationIgnoredFiles},
         eslintConfigs: integrationEslintConfigs
       });
 
     expect(await scaffold({projectRoot, tests: {integration: true}})).toEqual({
       scripts: integrationScripts,
-      devDependencies: integrationDevDependencies,
+      dependencies: {javascript: {development: integrationDevDependencies}},
       vcsIgnore: {
         directories: integrationIgnoredDirectories,
         files: integrationIgnoredFiles

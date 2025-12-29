@@ -11,7 +11,7 @@ export default async function ({projectRoot, tests}) {
 
   return deepmerge.all([
     {
-      dependencies: ['react', 'react-dom', 'prop-types'],
+      dependencies: {javascript: {production: ['react', 'react-dom', 'prop-types']}},
       eslintConfigs: ['react']
     },
     testingResults,
