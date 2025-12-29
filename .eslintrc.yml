@@ -1,4 +1,4 @@
 extends:
   - '@form8ion'
-  - '@form8ion/mocha'
+  - '@form8ion/vitest'
   - '@form8ion/cucumber'

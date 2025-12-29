@@ -1,14 +1,13 @@
-import {promises} from 'fs';
-import {resolve} from 'path';
-
-import mkdir from '../thirdparty-wrappers/make-dir.js';
+import {promises as fs} from 'node:fs';
+import {resolve} from 'node:path';
+import mkdir from 'make-dir';
 
 export const STORYBOOK_BUILD_DIRECTORY = 'storybook-static';
 
 export default async function ({projectRoot}) {
   const storybookDirectory = await mkdir(`${projectRoot}/.storybook`);
 
-  await promises.copyFile(
+  await fs.copyFile(
     resolve(__dirname, '..', 'templates', 'storybook-config.js'),
     `${storybookDirectory}/main.js`
   );
