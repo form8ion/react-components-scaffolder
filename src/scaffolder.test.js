@@ -26,14 +26,14 @@ describe('scaffolder', () => {
       .calledWith({projectRoot})
       .thenResolve({
         scripts: storybookScripts,
-        devDependencies: storybookDevDependencies,
+        dependencies: {javascript: {development: storybookDevDependencies}},
         vcsIgnore: {directories: storybookIgnoredDirectories, files: storybookIgnoredFiles}
       });
     when(scaffoldTesting)
       .calledWith({projectRoot, tests})
       .thenResolve({
         scripts: testingScripts,
-        devDependencies: testingDevDependencies,
+        dependencies: {javascript: {development: testingDevDependencies}},
         vcsIgnore: {directories: testingIgnoredDirectories, files: testingIgnoredFiles},
         eslintConfigs: testingEslintConfigs
       });
@@ -41,15 +41,19 @@ describe('scaffolder', () => {
     expect(await scaffold({projectRoot, tests})).toEqual({
       scripts: {...storybookScripts, ...testingScripts},
       eslintConfigs: ['react', ...testingEslintConfigs],
-      dependencies: [
-        'react',
-        'react-dom',
-        'prop-types'
-      ],
-      devDependencies: [
-        ...testingDevDependencies,
-        ...storybookDevDependencies
-      ],
+      dependencies: {
+        javascript: {
+          production: [
+            'react',
+            'react-dom',
+            'prop-types'
+          ],
+          development: [
+            ...testingDevDependencies,
+            ...storybookDevDependencies
+          ]
+        }
+      },
       vcsIgnore: {
         directories: [...testingIgnoredDirectories, ...storybookIgnoredDirectories],
         files: [...testingIgnoredFiles, ...storybookIgnoredFiles]

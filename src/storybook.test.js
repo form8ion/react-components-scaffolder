@@ -23,11 +23,15 @@ describe('storybook scaffolder', () => {
         start: 'start-storybook --port 8888 --ci',
         'build:storybook': 'build-storybook --quiet'
       },
-      devDependencies: [
-        '@storybook/react',
-        'babel-loader',
-        'webpack'
-      ],
+      dependencies: {
+        javascript: {
+          development: [
+            '@storybook/react',
+            'babel-loader',
+            'webpack'
+          ]
+        }
+      },
       vcsIgnore: {directories: [`/${storybookBuildDirectory}/`]}
     });
     expect(fs.copyFile).toHaveBeenCalledWith(
