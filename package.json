@@ -57,7 +57,6 @@
     "@form8ion/eslint-config": "7.0.13",
     "@form8ion/eslint-config-cucumber": "1.4.1",
     "@form8ion/eslint-config-vitest": "1.0.0",
-    "@form8ion/javascript": "14.6.0",
     "@form8ion/remark-lint-preset": "6.0.7",
     "@rollup/plugin-node-resolve": "16.0.3",
     "@travi/any": "3.1.2",
@@ -76,8 +75,5 @@
     "rollup-plugin-auto-external": "2.0.0",
     "vitest": "4.0.16",
     "vitest-when": "0.10.0"
-  },
-  "peerDependencies": {
-    "@form8ion/javascript": ">=2.0.0"
   }
 }
