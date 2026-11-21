@@ -45,7 +45,7 @@
     "access": "public",
     "provenance": true
   },
-  "packageManager": "npm@12.2.1+sha512.6ca0a6151553fc107e60f1186d9c10d57508dcde6de31292a54d4cc4e8e8ef3de25b3281274657442d7115d10df930bb3794ddcb0681cdfd9d317189abf7b63d",
+  "packageManager": "npm@12.2.3+sha512.a2f98d4517bbe89bdca7513a88e78f43a1fd66be1730eaea81f69e18d86d46f3f75d29762e8fdaf42d4de7f8d194b2ebb2a09e9bfa268067591e96796baca7d5",
   "dependencies": {
     "@form8ion/cypress-scaffolder": "4.0.0",
     "deepmerge": "^4.2.2",
